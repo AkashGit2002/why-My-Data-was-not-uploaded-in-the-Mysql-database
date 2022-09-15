@@ -1,0 +1,129 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .main {
+      width: 900px;
+      height: 500px;
+      border-top: 5px solid black;
+      border-bottom: 5px solid green;
+      border-left: 5px solid red;
+      border-right: 5px solid blue;
+      transform: translate(300px, 250px);
+      padding-left: 2px;
+      margin-right: 16px;
+      margin-bottom: 5px;
+      text-shadow: 1px 0px 10px green;
+
+    }
+
+    .text {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 40px;
+
+    }
+
+    form {
+      text-align: center;
+    }
+
+    b {
+      font-family: Arial, sans-serif;
+      font-size: 30px;
+      padding-left: 22%;
+      padding-top: 2%;
+    }
+
+    input {
+      font-family: Arial, sans-serif;
+      border-radius: 8px;
+      height: 30px;
+      width: 150px;
+      padding: 5px 5px 5px 10px;
+    }
+
+    textarea {
+      border-radius: 25px;
+    }
+
+    #btn {
+      border-radius: 25px;
+      background-color: rgb(9, 44, 243);
+      width: 150px;
+      height: 40px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="main">
+    <h2><b>Apply For Web Developer Post</b></h2><br>
+    <form action="connection.php" method="post">
+      
+      &nbsp;&nbsp;<input type="text" class="fname" placeholder="Enter your name*" name="firstname">
+
+      &nbsp;&nbsp;<input type="text" class="fname" placeholder="Enter your qualification*" name="quali"><br>
+
+      &nbsp;&nbsp;<input type="text" class="fname" placeholder="mobile number*" name="moblie">
+
+      &nbsp;&nbsp;<input type="text" class="fname" placeholder="email Id*" name="email"><br>
+      <select id="Developer" name="developer">
+        <option value="Web Developer">Web Developer</option>
+        <option value="Android Developer">Android Developer</option>
+        <option value="ios Developer">ios Developer</option>
+      </select>
+      &nbsp;&nbsp;<input type="text" class="fname" placeholder="Any References" name="ref"><br>
+
+      &nbsp;&nbsp;<textarea name="text" id="tid" cols="30" rows="10" placeholder="Any Achievements*"></textarea><br><br>
+
+      &nbsp;&nbsp;<input type="submit" class="btnres" id="btn" name="submit" value"Register"/>
+    </form>
+
+
+  </div>
+  </body>
+  
+  </html>
+  <?php
+  include 'connection.php';
+  
+  if(isset($_POST['submit'])){
+  
+  	$firstname=$_POST['firstname'];
+  	$var=$_POST['d'];
+  	$moblie=$_POST['moblie'];
+  	$email=$_POST['email'];
+  	$refer=$_POST['ref'];
+  	$developer=$_POST['developer'];
+  	
+  	$insertquery="insert into jobregistration(name, degree, moblie, email, refer, jobpost) 
+  					values('$firstname','$var','$moblie','$email','$refer','$developer')";
+  
+  	$res=mysqli_query($con,$insertquery);
+  
+  	if($res){
+  		?>
+  <script>
+    alert("ok");
+  </script>
+  <?php
+  	}else{
+  		?>
+  <script>alert("Data not inserted");</script>
+  <?php
+  		}
+  	}
+  		?>
+  
+
+  
+
+  
